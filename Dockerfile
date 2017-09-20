@@ -9,8 +9,6 @@ RUN apt-get -y update \
     && apt-get -y install \
         python \
         apt-utils \
-        # python3-software-properties \
-        # software-properties-common \
         python-yaml \
         python-m2crypto \
         python-crypto \
