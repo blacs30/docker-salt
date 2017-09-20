@@ -22,15 +22,15 @@ fi
 if [ $SALT_USE == "master" ]; then
   LOGS="/var/log/salt/minion /var/log/salt/master"
   echo "INFO: Starting salt-minion and auto connect to salt-master"
-  sudo /usr/bin/salt-minion --daemon --log-level=$LOG_LEVEL $OPTIONS
+  /usr/bin/salt-minion --daemon --log-level=$LOG_LEVEL $OPTIONS
   echo "INFO: Starting salt-api"
-  sudo /usr/bin/salt-api --daemon --log-level=$LOG_LEVEL
+  /usr/bin/salt-api --daemon --log-level=$LOG_LEVEL
 fi
 
 # Start salt-$SALT_USE
 echo "INFO: Starting salt-$SALT_USE with log level $LOG_LEVEL with hostname $SALT_NAME"
-sudo /usr/bin/salt-$SALT_USE --daemon --log-level=$LOG_LEVEL $OPTIONS
+/usr/bin/salt-$SALT_USE --daemon --log-level=$LOG_LEVEL $OPTIONS
 
 # Tailing logs to not bind docker process on salt process
 # To be able to restart salt with salt without killing container
-sudo tail -f $LOGS
+tail -f $LOGS
