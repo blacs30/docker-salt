@@ -2,8 +2,6 @@ FROM debian:latest
 
 MAINTAINER Blacs30 <github@lisowski-development.com>
 
-COPY docker-entrypoint.sh /
-
 RUN apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install \
@@ -37,10 +35,16 @@ RUN apt-get -y update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
 
-
-RUN chmod +x \
-    /docker-entrypoint.sh
+# Expose volumes
+VOLUME ["/etc/salt", "/var/cache/salt", "/var/logs/salt", "/srv/salt", "/srv/www"]
 
 EXPOSE 4505 4506 8000
+
+# Show salt versions
+RUN salt --versions
+
+COPY docker-entrypoint.sh /
+
+RUN chmod +x /docker-entrypoint.sh
 
 CMD /docker-entrypoint.sh    
