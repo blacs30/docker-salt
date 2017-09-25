@@ -36,7 +36,7 @@ RUN apt-get -y update \
     && rm -rf /var/lib/apt/lists/
 
 # Expose volumes
-VOLUME ["/etc/salt", "/var/cache/salt", "/var/logs/salt", "/srv/salt", "/srv/www"]
+VOLUME ["/etc/salt", "/var/cache/salt", "/var/log/salt", "/srv/salt", "/var/www"]
 
 EXPOSE 4505 4506 8000
 
