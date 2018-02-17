@@ -9,6 +9,7 @@ RUN set -x \
     && apt-get -y update \
     && apt-get -y upgrade \
     && apt-get -y install \
+        apt-transport-https \
         python \
         apt-utils \
         python-yaml \
@@ -24,7 +25,9 @@ RUN set -x \
         man \
         less \
     && echo deb http://repo.saltstack.com/apt/debian/9/amd64/archive/${short_version} stretch main | tee /etc/apt/sources.list.d/saltstack.list \
-    && wget -q -O - https://repo.saltstack.com/apt/debian/9/amd64/archive/${short_version}/SALTSTACK-GPG-KEY.pub | apt-key add - \
+    && wget -q -O - https://repo.saltstack.com/apt/debian/9/amd64/archive/${short_version}/SALTSTACK-GPG-KEY.pub | apt-key add -
+
+RUN set -x \
     && apt-get update \
     && apt-get install -y \
         salt-common=${version} \
@@ -33,10 +36,7 @@ RUN set -x \
         salt-ssh=${version} \
         salt-cloud=${version} \
         salt-api=${version} \
-        salt-syndic=${version} \
-    && apt-get -y autoremove \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/
+        salt-syndic=${version}
 
 RUN  set -x \
     && echo deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main | tee /etc/apt/sources.list.d/saltstack.list \
