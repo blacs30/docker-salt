@@ -24,6 +24,7 @@ RUN set -x \
         wget \
         man \
         less \
+        python-pip \
     && echo deb http://repo.saltstack.com/apt/debian/9/amd64/archive/${short_version} stretch main | tee /etc/apt/sources.list.d/saltstack.list \
     && wget -q -O - https://repo.saltstack.com/apt/debian/9/amd64/archive/${short_version}/SALTSTACK-GPG-KEY.pub | apt-key add -
 
@@ -36,7 +37,9 @@ RUN set -x \
         salt-ssh=${version} \
         salt-cloud=${version} \
         salt-api=${version} \
-        salt-syndic=${version}
+        salt-syndic=${version} \
+        python-timelib \
+    && pip install cloudflaredns-backup
 
 RUN  set -x \
     && echo deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main | tee /etc/apt/sources.list.d/saltstack.list \
