@@ -2,8 +2,8 @@ FROM debian:stable-slim
 
 MAINTAINER Blacs30 <github@lisowski-development.com>
 
-ENV version=2017.7.3+ds-1 \
-    short_version=2017.7.3
+ENV version=2017.7.4+ds-1 \
+    short_version=2017.7.4
 
 RUN set -x \
     && apt-get -y update \
