@@ -1,9 +1,9 @@
 FROM debian:stable-slim
 
-MAINTAINER Blacs30 <github@lisowski-development.com>
+MAINTAINER Blacs30 <github@lisowski-development.de>
 
-ENV version=2018.3.0+ds-1 \
-    short_version=2018.3.0
+ENV version=2018.3.2+ds-1 \
+    short_version=2018.3.2
 
 RUN set -x \
     && apt-get -y update \
