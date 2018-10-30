@@ -1,9 +1,9 @@
-FROM debian:stable-slim
+FROM debian:stretch-slim
 
-MAINTAINER Blacs30 <github@lisowski-development.de>
+MAINTAINER Blacs30 <github@lisowski-development.com>
 
-ENV version=2018.3.2+ds-1 \
-    short_version=2018.3.2
+ENV version=2018.3.3+ds-2 \
+    short_version=2018.3.3
 
 RUN set -x \
     && apt-get -y update \
